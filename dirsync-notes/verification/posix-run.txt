@@ -1,0 +1,5 @@
+ERLROOT=/usr/lib/erlang
+--- run ---
+existing dir: ok
+missing dir:  {error,enoent}
+file path:    ok

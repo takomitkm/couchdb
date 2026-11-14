@@ -1,0 +1,148 @@
+======================== EUnit ========================
+module 'couch_dirsync_tests'
+  couch_dirsync_tests:43: -sync_dir_test_/0-fun-8- (t_syncs_existing_dir)...[0.069 s] ok
+=INFO REPORT==== 15-Nov-2026::02:49:43.196166 ===
+    application: couch_stats
+    exited: stopped
+    type: temporary
+
+=INFO REPORT==== 15-Nov-2026::02:49:43.248884 ===
+    application: couch_log
+    exited: stopped
+    type: temporary
+
+=INFO REPORT==== 15-Nov-2026::02:49:43.250701 ===
+    application: config
+    exited: stopped
+    type: temporary
+
+[info] 2026-11-14T18:49:43.282292Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.313392Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.313402Z nonode@nohost <0.45.0> -------- Application couch_log exited with reason: stopped
+[info] 2026-11-14T18:49:43.313417Z nonode@nohost <0.45.0> -------- Application config exited with reason: stopped
+  couch_dirsync_tests:44: -sync_dir_test_/0-fun-6- (t_missing_dir_is_enoent)...[0.003 s] ok
+=INFO REPORT==== 15-Nov-2026::02:49:43.349614 ===
+    application: couch_stats
+    exited: stopped
+    type: temporary
+
+[info] 2026-11-14T18:49:43.349694Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.349734Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.349762Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+=INFO REPORT==== 15-Nov-2026::02:49:43.351049 ===
+    application: couch_log
+    exited: stopped
+    type: temporary
+
+=INFO REPORT==== 15-Nov-2026::02:49:43.352302 ===
+    application: config
+    exited: stopped
+    type: temporary
+
+  couch_dirsync_tests:45: -sync_dir_test_/0-fun-4- (t_rename_is_durable)...[0.074 s] ok
+[info] 2026-11-14T18:49:43.476827Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.476858Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.476882Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.476889Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+=INFO REPORT==== 15-Nov-2026::02:49:43.476773 ===
+    application: couch_stats
+    exited: stopped
+    type: temporary
+
+=INFO REPORT==== 15-Nov-2026::02:49:43.478541 ===
+    application: couch_log
+    exited: stopped
+    type: temporary
+
+=INFO REPORT==== 15-Nov-2026::02:49:43.479808 ===
+    application: config
+    exited: stopped
+    type: temporary
+
+  couch_dirsync_tests:46: -sync_dir_test_/0-fun-2- (t_rename_missing_is_enoent)...[0.002 s] ok
+=INFO REPORT==== 15-Nov-2026::02:49:43.519962 ===
+    application: couch_stats
+    exited: stopped
+    type: temporary
+
+[info] 2026-11-14T18:49:43.520073Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.520123Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.520152Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.520173Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.520219Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+=INFO REPORT==== 15-Nov-2026::02:49:43.522088 ===
+    application: couch_log
+    exited: stopped
+    type: temporary
+
+=INFO REPORT==== 15-Nov-2026::02:49:43.523481 ===
+    application: config
+    exited: stopped
+    type: temporary
+
+  couch_dirsync_tests:47: -sync_dir_test_/0-fun-0- (t_create_and_delete_couch_file)...=ERROR REPORT==== 15-Nov-2026::02:49:43.606773 ===
+unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.606905Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.606956Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.606964Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.606971Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.606981Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.607025Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.632294Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+=ERROR REPORT==== 15-Nov-2026::02:49:43.632227 ===
+unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.632350Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.632361Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.632372Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.632389Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.632458Z nonode@nohost <0.208.0> -------- unknown metric: [couchdb,open_os_files]
+[error] 2026-11-14T18:49:43.685379Z nonode@nohost emulator -------- Error in process <0.215.0> with exit value:
+{{badmatch,{error,enoent}},[{couch_file,'-init_delete_dir/1-fun-0-',2,[{file,"src/couch_file.erl"},{line,459}]},{filelib,do_fold_files2,8,[{file,"filelib.erl"},{line,327}]}]}
+
+[error] 2026-11-14T18:49:43.685441Z nonode@nohost emulator -------- Error in process <0.215.0> with exit value:
+{{badmatch,{error,enoent}},[{couch_file,'-init_delete_dir/1-fun-0-',2,[{file,"src/couch_file.erl"},{line,459}]},{filelib,do_fold_files2,8,[{file,"filelib.erl"},{line,327}]}]}
+
+=ERROR REPORT==== 15-Nov-2026::02:49:43.685056 ===
+Error in process <0.215.0> with exit value:
+{{badmatch,{error,enoent}},
+ [{couch_file,'-init_delete_dir/1-fun-0-',2,
+              [{file,"src/couch_file.erl"},{line,459}]},
+  {filelib,do_fold_files2,8,[{file,"filelib.erl"},{line,327}]}]}
+
+[error] 2026-11-14T18:49:43.685481Z nonode@nohost emulator -------- Error in process <0.215.0> with exit value:
+{{badmatch,{error,enoent}},[{couch_file,'-init_delete_dir/1-fun-0-',2,[{file,"src/couch_file.erl"},{line,459}]},{filelib,do_fold_files2,8,[{file,"filelib.erl"},{line,327}]}]}
+
+[error] 2026-11-14T18:49:43.685504Z nonode@nohost emulator -------- Error in process <0.215.0> with exit value:
+{{badmatch,{error,enoent}},[{couch_file,'-init_delete_dir/1-fun-0-',2,[{file,"src/couch_file.erl"},{line,459}]},{filelib,do_fold_files2,8,[{file,"filelib.erl"},{line,327}]}]}
+
+[error] 2026-11-14T18:49:43.685515Z nonode@nohost emulator -------- Error in process <0.215.0> with exit value:
+{{badmatch,{error,enoent}},[{couch_file,'-init_delete_dir/1-fun-0-',2,[{file,"src/couch_file.erl"},{line,459}]},{filelib,do_fold_files2,8,[{file,"filelib.erl"},{line,327}]}]}
+
+[error] 2026-11-14T18:49:43.685530Z nonode@nohost emulator -------- Error in process <0.215.0> with exit value:
+{{badmatch,{error,enoent}},[{couch_file,'-init_delete_dir/1-fun-0-',2,[{file,"src/couch_file.erl"},{line,459}]},{filelib,do_fold_files2,8,[{file,"filelib.erl"},{line,327}]}]}
+
+[0.137 s] ok
+[info] 2026-11-14T18:49:43.719503Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.719529Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.719540Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.719549Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+[info] 2026-11-14T18:49:43.719580Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+=INFO REPORT==== 15-Nov-2026::02:49:43.719137 ===
+    application: couch_stats
+    exited: stopped
+    type: temporary
+
+[info] 2026-11-14T18:49:43.719592Z nonode@nohost <0.45.0> -------- Application couch_stats exited with reason: stopped
+=INFO REPORT==== 15-Nov-2026::02:49:43.722073 ===
+    application: couch_log
+    exited: stopped
+    type: temporary
+
+=INFO REPORT==== 15-Nov-2026::02:49:43.724316 ===
+    application: config
+    exited: stopped
+    type: temporary
+
+  [done in 3.015 s]
+=======================================================
+  All 5 tests passed.

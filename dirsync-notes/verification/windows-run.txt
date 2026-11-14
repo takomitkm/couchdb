@@ -1,0 +1,12 @@
+=== cross-compile NIF -> couch_dirsync.dll ===
+-rwxrwxrwx 1 takomi takomi 94745 Nov 15 03:24 /mnt/s/apps/llm/agentwork/.tmp/couchdb-win-flush/wintest/couch/priv/couch_dirsync.dll
+=== compile Erlang modules with Windows erlc ===
+=== run on real Windows ===
+probe dir: s:/apps/llm/agentwork/.tmp/couchdb-win-flush/wintest/couch/probe
+existing dir      -> ok (expect ok)
+missing dir       -> {error,enoent} (expect {error,enoent})
+dir after create  -> ok (expect ok)
+forward-slash dir -> ok (expect ok)
+binary path       -> ok (expect ok)
+iolist path       -> ok (expect ok)
+non-path arg      -> {error,badarg} (expect badarg-or-error)

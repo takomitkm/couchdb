@@ -1,0 +1,5 @@
+673   fsync(20)                         = 0
+673   rename("/mnt/s/apps/llm/agentwork/.tmp/couchdb-win-flush/probe/work/delprobe2/deleted.couch", "/mnt/s/apps/llm/agentwork/.tmp/couchdb-win-flush/probe/work/delprobe2/.delete/252c90cb43694de8b5590a2774242f40") = 0
+673   fsync(20)                         = 0
+673   fsync(20)                         = 0
+673   unlink("/mnt/s/apps/llm/agentwork/.tmp/couchdb-win-flush/probe/work/delprobe2/.delete/252c90cb43694de8b5590a2774242f40") = 0

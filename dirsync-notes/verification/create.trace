@@ -1,0 +1,3 @@
+571   openat(AT_FDCWD, "/mnt/s/apps/llm/agentwork/.tmp/couchdb-win-flush/probe/work/createprobe/created.couch", O_RDWR|O_CREAT|O_APPEND, 0666) = 19
+571   openat(AT_FDCWD, "/mnt/s/apps/llm/agentwork/.tmp/couchdb-win-flush/probe/work/createprobe", O_RDONLY) = 20
+571   fsync(20)                         = 0
