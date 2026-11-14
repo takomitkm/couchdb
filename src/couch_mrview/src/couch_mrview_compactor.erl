@@ -268,7 +268,7 @@ swap_compacted(OldState, NewState) ->
         Duration
     ]),
     ok = couch_file:delete(RootDir, IndexFName),
-    ok = file:rename(CompactFName, IndexFName),
+    ok = couch_file:rename(CompactFName, IndexFName),
 
     unlink(OldState#mrst.fd),
     demonitor(OldState#mrst.fd_monitor, [flush]),

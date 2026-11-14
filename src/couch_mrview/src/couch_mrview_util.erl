@@ -1140,7 +1140,7 @@ update_index_file(State) ->
                 [IndexFile, NewIndexFile]
             ),
             ok = filelib:ensure_dir(NewIndexFile),
-            ok = file:rename(IndexFile, NewIndexFile),
+            ok = couch_file:rename(IndexFile, NewIndexFile),
             couch_log:notice(
                 "Successfully updated legacy view index file"
                 " ~s",

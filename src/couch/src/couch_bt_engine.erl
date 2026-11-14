@@ -849,7 +849,7 @@ open_db_file(FilePath, Options) ->
                 {ok, Fd} ->
                     Fmt = "Recovering from compaction file: ~s~s",
                     couch_log:info(Fmt, [FilePath, ".compact"]),
-                    ok = file:rename(FilePath ++ ".compact", FilePath),
+                    ok = couch_file:rename(FilePath ++ ".compact", FilePath),
                     ok = couch_file:sync(Fd),
                     {ok, Fd};
                 {error, enoent} ->
@@ -1216,14 +1216,14 @@ finish_compaction_int(#st{} = OldSt, #st{} = NewSt1) ->
     % Rename our *.compact.data file to *.compact so that if we
     % die between deleting the old file and renaming *.compact
     % we can recover correctly.
-    ok = file:rename(CompactDataPath, FilePath ++ ".compact"),
+    ok = couch_file:rename(CompactDataPath, FilePath ++ ".compact"),
 
     % Remove the uncompacted database file
     RootDir = config:get("couchdb", "database_dir", "."),
     couch_file:delete(RootDir, FilePath),
 
     % Move our compacted file into its final location
-    ok = file:rename(FilePath ++ ".compact", FilePath),
+    ok = couch_file:rename(FilePath ++ ".compact", FilePath),
 
     % Delete the old meta compaction file after promoting
     % the compaction file.

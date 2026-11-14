@@ -49,6 +49,7 @@
 -export([append_terms/2, append_terms/3]).
 -export([write_header/2, write_header/3, read_header/1]).
 -export([delete/2, delete/3, nuke_dir/2, init_delete_dir/1]).
+-export([sync_dir/1, rename/2]).
 
 % gen_server callbacks
 -export([init/1, terminate/2]).
@@ -336,9 +337,45 @@ delete(RootDir, FullFilePath, Options) ->
             delete_file(RootDir, FullFilePath, Async, DeleteAfterRename)
     end.
 
+% Flush the directory an entry was created, renamed or unlinked in.
+%
+% Writing to a file and syncing the file descriptor does not make the entry
+% that names it durable: after a power loss a file that was just created may
+% not be there at all, and a file that was just unlinked may reappear. Only a
+% sync of the directory itself orders those operations against the disk.
+%
+% Failures are logged and swallowed. A directory that cannot be flushed, or a
+% build without the couch_dirsync NIF, leaves the database correct -- it only
+% loses the durability of the directory entry, which is what CouchDB had
+% before this call was made at all.
+sync_dir(Dir) ->
+    case couch_dirsync:sync_dir(Dir) of
+        ok ->
+            ok;
+        {error, Reason} ->
+            couch_log:warning("Could not sync directory ~s: ~p", [Dir, Reason]),
+            ok
+    end.
+
+% Rename and make the rename durable. Renaming into a different directory
+% changes both directories, so both are synced.
+rename(From, To) ->
+    case file:rename(From, To) of
+        ok ->
+            FromDir = filename:dirname(From),
+            ToDir = filename:dirname(To),
+            ok = sync_dir(FromDir),
+            case ToDir =:= FromDir of
+                true -> ok;
+                false -> sync_dir(ToDir)
+            end;
+        Error ->
+            Error
+    end.
+
 delete_file(RootDir, Filepath, Async, DeleteAfterRename) ->
     DelFile = filename:join([RootDir, ".delete", ?b2l(couch_uuids:random())]),
-    case file:rename(Filepath, DelFile) of
+    case rename(Filepath, DelFile) of
         ok when DeleteAfterRename ->
             if
                 (Async) ->
@@ -354,7 +391,7 @@ delete_file(RootDir, Filepath, Async, DeleteAfterRename) ->
 rename_file(Original) ->
     DeletedFileName = deleted_filename(Original),
     Now = calendar:local_time(),
-    case file:rename(Original, DeletedFileName) of
+    case rename(Original, DeletedFileName) of
         ok -> file:change_time(DeletedFileName, Now);
         Else -> Else
     end.
@@ -395,7 +432,8 @@ delete_dir(RootDelDir, Dir) ->
         case filelib:is_dir(Path) of
             true ->
                 ok = nuke_dir(RootDelDir, Path),
-                file:del_dir(Path);
+                file:del_dir(Path),
+                sync_dir(Dir);
             false ->
                 delete_file(RootDelDir, Path, false, DeleteAfterRename)
         end
@@ -403,7 +441,8 @@ delete_dir(RootDelDir, Dir) ->
     case file:list_dir(Dir) of
         {ok, Files} ->
             lists:foreach(FoldFun, Files),
-            ok = file:del_dir(Dir);
+            ok = file:del_dir(Dir),
+            sync_dir(filename:dirname(Dir));
         {error, enoent} ->
             ok
     end.
@@ -480,6 +519,9 @@ init({Filepath, Options, ReturnPid, Ref}) ->
                                     init_status_error(ReturnPid, Ref, {error, eexist})
                             end;
                         false ->
+                            % The file is new: make its directory entry
+                            % durable before anything is written to it.
+                            ok = sync_dir(filename:dirname(Filepath)),
                             maybe_track_open_os_files(Options),
                             erlang:send_after(?INITIAL_WAIT, self(), maybe_close),
                             {ok, dup(File#file{fd = Fd})}

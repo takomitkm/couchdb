@@ -293,6 +293,10 @@ CouchCFileEnv = [{"CFLAGS", "$CFLAGS -Wall -Werror -DNDEBUG -O3 -fvisibility=hid
 CouchCFilePath = "priv/couch_cfile.so".
 CouchCFileSrc = ["priv/couch_cfile/*.c"].
 
+DirSyncEnv = [{"CFLAGS", "$CFLAGS -Wall -DNDEBUG -O3 -fvisibility=hidden"}].
+DirSyncPath = "priv/couch_dirsync.so".
+DirSyncSrc = ["priv/couch_dirsync/*.c"].
+
 SpidermonkeySpecs = case WithSpidermonkey of
     true -> [{".*", CouchJSPath, CouchJSSrc, [{env, CouchJSEnv}]}];
     false -> []
@@ -305,7 +309,10 @@ PortSpecs = SpidermonkeySpecs ++ [
         {"bsd",   ComparePath, CompareSrc, [{env, IcuEnv ++ IcuBsdEnv}]},
         {"win32",  ComparePath, CompareSrc, [{env, IcuWinEnv}]},
         {"(linux|bsd|darwin)", CouchCFilePath, CouchCFileSrc, [{env, CouchCFileEnv}]},
-        {"win32",  CouchCFilePath, CouchCFileSrc, []}
+        {"win32",  CouchCFilePath, CouchCFileSrc, []},
+        % directory sync (POSIX and Windows)
+        {"(linux|bsd|darwin)", DirSyncPath, DirSyncSrc, [{env, DirSyncEnv}]},
+        {"win32",  DirSyncPath, DirSyncSrc, []}
 ].
 
 %% hack required until switch to enc/rebar3
