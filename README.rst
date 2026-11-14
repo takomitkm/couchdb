@@ -12,8 +12,10 @@ below.
 What is on the branch
 =====================
 
-Branch: ``dirsync-proposal``, one commit on top of upstream ``main`` at
-``300d379c6`` ("Fix types parameter for /_index_info", 2026-11-13).
+Branch: ``dirsync-proposal``. The branch also carries ``dirsync-notes/``:
+the pull request that was written but not sent (``PR-DRAFT.md``), the exact
+base commit and verification matrix (``LEDGER.md``), how to reproduce every
+check (``REPRODUCE.md``), and the raw output under ``verification/``.
 
 It adds a directory flush where CouchDB currently changes a directory entry
 without ordering that change against the disk. CouchDB fsyncs database file
